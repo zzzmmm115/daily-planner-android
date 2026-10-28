@@ -176,6 +176,14 @@
     android:localeConfig="@xml/locales_config">
 
     <activity
+      android:name="org.tasks.importer.TextScheduleImportActivity"
+      android:exported="false"
+      android:launchMode="singleTask"
+      android:taskAffinity="${applicationId}.textimport"
+      android:excludeFromRecents="true"
+      android:label="@string/text_import_title" />
+
+    <activity
       android:name="net.openid.appauth.RedirectUriReceiverActivity"
       android:exported="true"
       tools:node="replace">

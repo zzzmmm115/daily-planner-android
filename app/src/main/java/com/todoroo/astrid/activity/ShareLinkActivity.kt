@@ -32,7 +32,27 @@ class ShareLinkActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = intent
+        handleIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent) {
+        val sharedText = when (intent.action) {
+            Intent.ACTION_SEND -> intent.getStringExtra(Intent.EXTRA_TEXT)
+            Intent.ACTION_PROCESS_TEXT -> intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString()
+            else -> null
+        }
+        if (sharedText != null && (sharedText.contains('\n') || sharedText.contains('\r')) &&
+            (intent.action == Intent.ACTION_PROCESS_TEXT || intent.type == "text/plain" && !intent.hasExtra(Intent.EXTRA_STREAM))) {
+            startActivity(org.tasks.importer.TextScheduleImportActivity.intent(this, sharedText))
+            finish()
+            return
+        }
         when (intent.action) {
             Intent.ACTION_PROCESS_TEXT -> lifecycleScope.launch {
                 val text = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)

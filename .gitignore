@@ -1,4 +1,5 @@
 .kotlin
+/dist/
 .idea
 *.iml
 .gradle

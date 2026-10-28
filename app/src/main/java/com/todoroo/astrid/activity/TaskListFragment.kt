@@ -763,6 +763,11 @@ class TaskListFragment : Fragment(), OnRefreshListener, Toolbar.OnMenuItemClickL
     override fun onMenuItemClick(item: MenuItem): Boolean {
         Timber.d("onMenuItemClick($item)")
         return when (item.itemId) {
+            R.id.menu_text_import -> {
+                startActivity(org.tasks.importer.TextScheduleImportActivity.intent(requireContext())
+                    .putExtra(org.tasks.importer.TextScheduleImportActivity.EXTRA_FILTER, filter as? CaldavFilter))
+                true
+            }
             R.id.menu_settings -> {
                 settingsLauncher.launch(Intent(context, MainPreferences::class.java))
                 true

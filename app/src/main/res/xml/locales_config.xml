@@ -66,6 +66,6 @@
     <locale android:name="uk" />
     <locale android:name="ur" />
     <locale android:name="vi" />
-    <locale android:name="zh-rCN" />
-    <locale android:name="zh-rTW" />
+    <locale android:name="zh-CN" />
+    <locale android:name="zh-TW" />
 </locale-config>

@@ -243,20 +243,30 @@ internal class TasksWidgetBuilder(
         task: TaskContainer,
         dateFormatter: DateFormatter,
     ) = with(row) {
-        val dueDateRes = if (settings.endDueDate) R.id.widget_due_end else R.id.widget_due_bottom
+        val hasTimeRange = task.task.hasStartTime() && task.hasDueTime() && task.task.hideUntil != task.dueDate
+        // A full time range can consume the entire row in a two-column widget.
+        // Keep the task title readable by displaying ranges on their own line.
+        val displayAtEnd = settings.endDueDate && !hasTimeRange
+        val dueDateRes = if (displayAtEnd) R.id.widget_due_end else R.id.widget_due_bottom
         setViewVisibility(
-            if (settings.endDueDate) R.id.widget_due_bottom else R.id.widget_due_end,
+            if (displayAtEnd) R.id.widget_due_bottom else R.id.widget_due_end,
             View.GONE
         )
         val hasDueDate = task.hasDueDate()
-        val endPad = if (hasDueDate && settings.endDueDate) 0 else hPad
+        val endPad = if (hasDueDate && displayAtEnd) 0 else hPad
         setViewPadding(R.id.widget_text, 0, 0, endPad, 0)
         if (hasDueDate) {
-            if (settings.endDueDate) {
+            if (displayAtEnd) {
                 setViewPadding(R.id.widget_due_end, hPad, settings.vPad, hPad, settings.vPad)
             }
             setViewVisibility(dueDateRes, View.VISIBLE)
-            val text = if (
+            val text = if (hasTimeRange) {
+                val start = dateFormatter.relativeDateTime(task.task.hideUntil, alwaysDisplayFullDate = settings.showFullDate)
+                val end = if (task.task.hideUntil.startOfDay() == task.dueDate.startOfDay()) {
+                    dateFormatter.time(task.dueDate)
+                } else dateFormatter.relativeDateTime(task.dueDate, alwaysDisplayFullDate = settings.showFullDate)
+                "$start–$end"
+            } else if (
                 settings.groupMode == SortHelper.SORT_DUE &&
                 (task.sortGroup ?: 0L) >= currentTimeMillis().startOfDay() &&
                 !disableGroups

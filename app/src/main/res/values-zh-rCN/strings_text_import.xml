@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_import_title">文字导入日程</string>
+    <string name="text_import_back">返回</string>
+    <string name="text_import_intro">粘贴时间安排或待办清单，核对日期和时间后一次保存。</string>
+    <string name="text_import_show_future">导入后在应用中显示未开始的任务</string>
+    <string name="text_import_list">导入清单：%1$s</string>
+    <string name="text_import_loading">正在读取…</string>
+    <string name="text_import_default_date">无日期条目归入（YYYY-MM-DD）</string>
+    <string name="text_import_text">日程或待办文字</string>
+    <string name="text_import_paste">粘贴剪贴板</string>
+    <string name="text_import_example">填入示例</string>
+    <string name="text_import_help">支持普通列表、编号、Markdown复选框和时间表，可混合粘贴。时间用08:00格式；跨日结束可写次日00:30或24:00。不填时间的条目只保存日期。日期时间按手机时区处理。</string>
+    <string name="text_import_preview">预览待办</string>
+    <string name="text_import_count">识别%1$d项 · 选中%2$d项</string>
+    <string name="text_import_ignored">有%1$d行标题或说明未作为任务导入，请核对预览。</string>
+    <string name="text_import_edit_source">修改原文</string>
+    <string name="text_import_item">第%1$d项</string>
+    <string name="text_import_duplicate">同名、同日期和同时段的任务已存在，默认跳过。</string>
+    <string name="text_import_completed_source">原文标为已完成，默认不导入。</string>
+    <string name="text_import_task_title">任务名称</string>
+    <string name="text_import_date">日期</string>
+    <string name="text_import_start">开始</string>
+    <string name="text_import_end">结束</string>
+    <string name="text_import_notes">备注 / 完成标准</string>
+    <string name="text_import_save">导入%1$d项</string>
+    <string name="text_import_progress">正在处理…已保存%1$d项</string>
+    <string name="text_import_done">导入完成</string>
+    <string name="text_import_result">已导入%1$d项，跳过重复%2$d项。未勾选的条目未导入。</string>
+    <string name="text_import_open_list">查看清单</string>
+    <string name="text_import_incoming_title">收到新的日程文字</string>
+    <string name="text_import_incoming_message">要用新文字替换当前草稿吗？已保存的任务会保留。</string>
+    <string name="text_import_replace">使用新文字</string>
+    <string name="text_import_keep">保留当前草稿</string>
+</resources>

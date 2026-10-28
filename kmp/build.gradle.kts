@@ -244,7 +244,8 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         buildConfigField("int", "VERSION_CODE", "$appVersionCode")
         buildConfigField("String", "VERSION_NAME", "\"$appVersionName\"")
-        buildConfigField("String", "APPLICATION_ID", "\"${libs.versions.applicationId.get()}\"")
+        val androidApplicationId = libs.versions.applicationId.get() + if (providers.gradleProperty("dailyBuild").orNull == "true") ".daily" else ""
+        buildConfigField("String", "APPLICATION_ID", "\"$androidApplicationId\"")
         val tasks_dev_url: String? by project
         buildConfigField("String", "DEV_URL", "\"${tasks_dev_url ?: ""}\"")
     }

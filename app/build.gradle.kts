@@ -19,6 +19,7 @@ plugins {
 
 val appVersionCode: Int by extra
 val appVersionName: String by extra
+val dailyBuild = providers.gradleProperty("dailyBuild").orNull == "true"
 
 kotlin {
     compilerOptions {
@@ -86,6 +87,11 @@ android {
     @Suppress("LocalVariableName")
     buildTypes {
         debug {
+            if (dailyBuild) {
+                applicationIdSuffix = ".daily"
+                versionNameSuffix = "-daily.1"
+                resValue("string", "opentasks_authority", "${libs.versions.applicationId.get()}.daily.opentasks")
+            }
             configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = false
             }
@@ -154,6 +160,9 @@ android {
     }
 
     sourceSets {
+        if (dailyBuild) {
+            maybeCreate("genericDebug").res.srcDir("src/daily/res")
+        }
         // Shared test helpers replace Android-test symlinks, which are not portable to Windows.
         getByName("test").java.directories.add("src/sharedTest/java")
         getByName("androidTest").java.directories.add("src/sharedTest/java")
@@ -180,6 +189,12 @@ configurations.all {
     exclude(group = "com.google.j2objc")
     exclude(group = "com.google.http-client", module = "google-http-client-apache-v2")
     exclude(group = "com.google.http-client", module = "google-http-client-jackson2")
+}
+
+// The personal offline build can coexist with the upstream app. The generic
+// variant uses its own analytics implementation and does not require Firebase.
+tasks.matching { it.name == "processGenericDebugGoogleServices" }.configureEach {
+    if (dailyBuild) enabled = false
 }
 
 val genericImplementation by configurations

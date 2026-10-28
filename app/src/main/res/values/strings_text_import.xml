@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_import_title">Import schedule text</string>
+    <string name="text_import_back">Back</string>
+    <string name="text_import_intro">Paste a schedule or checklist. Review dates and times before saving.</string>
+    <string name="text_import_show_future">Show not-yet-started tasks in the app after importing</string>
+    <string name="text_import_list">Destination: %1$s</string>
+    <string name="text_import_loading">Loading…</string>
+    <string name="text_import_default_date">Date for undated items (YYYY-MM-DD)</string>
+    <string name="text_import_text">Schedule or checklist text</string>
+    <string name="text_import_paste">Paste clipboard</string>
+    <string name="text_import_example">Fill example</string>
+    <string name="text_import_help">Supports plain lists, numbered lists, Markdown checkboxes and schedule tables. Times use HH:mm. Use 次日00:30 or 24:00 for an overnight end. Untimed items stay untimed. Dates use the phone time zone.</string>
+    <string name="text_import_preview">Preview items</string>
+    <string name="text_import_count">%1$d items · %2$d selected</string>
+    <string name="text_import_ignored">%1$d heading or description lines were not added. Review the preview.</string>
+    <string name="text_import_edit_source">Edit original text</string>
+    <string name="text_import_item">Item %1$d</string>
+    <string name="text_import_duplicate">Same title, date and time already exists. Skipped by default.</string>
+    <string name="text_import_completed_source">Marked complete in the source; not selected by default.</string>
+    <string name="text_import_task_title">Task</string>
+    <string name="text_import_date">Date</string>
+    <string name="text_import_start">Start</string>
+    <string name="text_import_end">End</string>
+    <string name="text_import_notes">Notes / completion criteria</string>
+    <string name="text_import_save">Import %1$d items</string>
+    <string name="text_import_progress">Processing… %1$d saved</string>
+    <string name="text_import_done">Import complete</string>
+    <string name="text_import_result">Imported %1$d items; skipped %2$d duplicates. Unselected items were not added.</string>
+    <string name="text_import_open_list">View list</string>
+    <string name="text_import_incoming_title">New schedule text received</string>
+    <string name="text_import_incoming_message">Replace the current draft with the new text? Saved tasks will be kept.</string>
+    <string name="text_import_replace">Use new text</string>
+    <string name="text_import_keep">Keep current draft</string>
+</resources>
